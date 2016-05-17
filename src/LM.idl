@@ -1,0 +1,16 @@
+module tp {
+    struct Message {
+        string title;
+        string author;
+        string date;
+        string body;
+    };
+
+    interface LM {
+        readonly attribute string theme;
+        readonly attribute string moderator;
+        boolean postMessage(in Message m);
+        Message getMessage(in string title);
+        boolean removeMessage(in string title);
+    };
+};
