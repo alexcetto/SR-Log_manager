@@ -7,8 +7,24 @@ import tp.LMHelper;
 /**
  * Created by josetarsitano on 04/05/2016.
  */
+
 public class Client {
     static LM LgManagerImpl;
+
+//not the right type
+    public void prepareLog(LogArray log){
+        try{
+            FileOutPutStrem fileOut = new FileOutPutStrem("RelaiLog.ser");
+            ObjectOutPutStream out = new ObjectOutPutStream(fileOut);
+            out.WriteObject(log);
+            out.close();
+            System.out.printf("Client log saved to Server log");
+        }
+        catch(IOException i){
+            i.printStackTrace();        
+        }
+        return fileOut;
+    }
 
     public static void main(String args[]) {
         try {
@@ -19,6 +35,20 @@ public class Client {
 
             String name = "LM";
             LgManagerImpl = LMHelper.narrow(ncRef.resolve_str(name));
+               public void saveLog(Log log){
+        try{
+            FileOutPutStrem fileOut = new FileOutPutStrem("RelaiLog.ser");
+            ObjectOutPutStream out = new ObjectOutPutStream(fileOut);
+            out.WriteObject(log);
+            out.close();
+            System.out.printf("Client log saved to Server log");
+        }
+        catch(IOException i){
+            i.printStackTrace();        
+        }
+        return;
+
+            LgManagerImpl.saveLogToServer(/*file deserializedFile: RelaiLog.ser*/);
 
             System.out.println(LMImpl.sayHello());
         } catch (Exception e) {

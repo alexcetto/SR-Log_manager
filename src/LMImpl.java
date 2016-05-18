@@ -38,4 +38,27 @@ public class LMImpl extends tp.LMPOA {
     static public String sayHello() {
         return "Hello client";
     }
+
+//Not a valide type for the file
+        public void saveLogToServer(serfile inFile){
+
+            try
+            {
+                FileInputStream inFile = new FileInputStream(inFile);
+                ObjectInPutStream in = new ObjectInPutStream(inFile);
+                //object need to be saved to file
+                in.close();
+                inFile.close();
+            }
+            catch(IOException i){
+                i.printStackTrace();
+                return;
+            }
+            catch(ClassNotFoundException c){
+                System.out.println("Log Array Class not found");
+                c.printStackTrace();
+                return;
+            }
+            }
+        }
 }
